@@ -18,6 +18,12 @@ func Open(driverName, dataSourceName string) (db *SqlWrap, err error) {
 	return db, err
 }
 
+func (s *SqlWrap) Close() {
+    if s.db != nil {
+        s.db.Close()
+    }
+}
+
 // set real sql DB
 func (s *SqlWrap) SetDB(db *sql.DB) {
 	s.db = db
